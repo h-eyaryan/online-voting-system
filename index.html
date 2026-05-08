@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🗳️ Online Voting System</title>
+    <link rel="stylesheet" href="batman.css">
+
+</head>
+<body>
+    <div class="container">
+        <!-- Auth Section -->
+        <div id="auth-section">
+            <div class="form-container">
+                <h1>🗳️ Online Voting System</h1>
+                <div id="alert"></div>
+
+                <div class="form-toggle">
+                    <button class="tab active" onclick="showForm('login')">Login</button>
+                    <button class="tab" onclick="showForm('register')">Register</button>
+                </div>
+
+                <!-- Login Form -->
+                <form id="login-form" class="auth-form active">
+                    <input type="text" id="login-username" placeholder="Username" required>
+                    <input type="password" id="login-password" placeholder="Password" required>
+                    <button type="submit">Login</button>
+                </form>
+
+                <!-- Register Form -->
+                <form id="register-form" class="auth-form">
+                    <input type="text" id="reg-username" placeholder="Username" required>
+                    <input type="email" id="reg-email" placeholder="Email" required>
+                    <input type="password" id="reg-password" placeholder="Password" required>
+                    <button type="submit">Register</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Welcome Section -->
+        <div id="welcome-section" class="welcome-section">
+            <h1>Welcome back, <span id="welcome-name"></span>!</h1>
+            <p>You have successfully voted. Thank you for participating in democracy! 🇺🇸</p>
+            <button class="vote-btn" onclick="showResults()">View Results</button>
+            <br><br>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+
+        <!-- Voting Section -->
+        <div id="voting-section" class="voting-section">
+            <nav class="navbar">
+                <h2>🗳️ Voting Dashboard</h2>
+                <span id="user-info">Welcome, <span id="current-user"></span> | 
+                    <span class="logout-btn" onclick="logout()">Logout</span>
+                </span>
+            </nav>
+
+            <h2>🇺🇸 Presidential Election 2024</h2>
+            <form id="voting-form">
+                <div class="candidates-grid">
+                    <div class="candidate-card" data-id="1" onclick="selectCandidate(1, event)">
+                        <div class="candidate-img">JD</div>
+                        <h3>John Doe</h3>
+                        <p>Democratic Party</p>
+                    </div>
+                    <div class="candidate-card" data-id="2" onclick="selectCandidate(2, event)">
+                        <div class="candidate-img">JS</div>
+                        <h3>Jane Smith</h3>
+                        <p>Republican Party</p>
+                    </div>
+                    <div class="candidate-card" data-id="3" onclick="selectCandidate(3, event)">
+                        <div class="candidate-img">MJ</div>
+                        <h3>Mike Johnson</h3>
+                        <p>Independent</p>
+                    </div>
+                </div>
+                
+                <button type="submit" class="vote-btn" id="submit-vote" disabled>✅ Cast Your Vote</button>
+            </form>
+        </div>
+
+        <!-- Results Section -->
+        <div id="results-section" class="results-section">
+            <nav class="navbar">
+                <h2>📊 Election Results</h2>
+                <span class="logout-btn" onclick="logout()">Logout</span>
+            </nav>
+
+            <div class="total-votes">Total Votes Cast: <span id="total-votes">0</span></div>
+            
+            <div class="results-grid" id="results-grid">
+                <!-- Results populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script src="election.js"></script>
+</body>
+</html>
